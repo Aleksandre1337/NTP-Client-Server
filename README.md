@@ -4,7 +4,7 @@
 
 This project sets up two virtual servers using Vagrant, VirtualBox, and Ansible. The main server node is equipped with Chrony, an open-source time synchronization server, and the client node is automatically configured to connect to it. This setup is ideal for testing and development environments where time synchronization between servers is required.
 
-The client node will only be equipped with base ubuntu utilities, therefore, only timedatectl and timesyncd will be used for synchronization. This project was configured to be provisioned on a Windows machine via WSL. Feel free to switch to VMware Fusion and use the appropriate box from Vagrant Cloud.
+The client node will only be equipped with base ubuntu utilities, therefore, only timedatectl and timesyncd will be used for synchronization. This project was configured to be provisioned on a Windows machine via WSL. Feel free to switch to VMware Fusion and use the appropriate image from Vagrant Cloud.
 
 ## Dependencies
 
