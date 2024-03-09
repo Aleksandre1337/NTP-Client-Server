@@ -1,0 +1,12 @@
+---
+
+configs:
+  memory: 2048
+  cpus: 2
+  box: generic/ubuntu2204
+  base_ip: 192.168.56.20
+  nodes:
+  - name: ntp-server
+    playbook: ntp-server.yaml
+  - name: ntp-client
+    playbook: ntp-client.yaml
