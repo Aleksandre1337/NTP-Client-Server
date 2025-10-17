@@ -1,0 +1,25 @@
+- import_role:
+    name: common
+
+- name: Install required packages
+  apt:
+    name: "{{ ntp_packages }}"
+    update_cache: yes
+    state: latest
+
+- name: Allow NTP traffic
+  ufw:
+    rule: allow
+    port: '123'
+    proto: udp
+
+- name: Configure chrony to allow local subnet
+  lineinfile:
+    path: /etc/chrony/chrony.conf
+    line: "allow {{ ntp_network }}"
+    create: yes
+
+- name: Restart chrony
+  service:
+    name: chrony
+    state: restarted

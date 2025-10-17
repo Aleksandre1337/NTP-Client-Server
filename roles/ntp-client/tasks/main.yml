@@ -1,0 +1,14 @@
+- import_role:
+    name: common
+
+- name: Disable NTP before configuration
+  command: timedatectl set-ntp no
+
+- name: Set NTP server
+  lineinfile:
+    path: /etc/systemd/timesyncd.conf
+    line: "NTP={{ groups['ntp-server'][0] }}"
+    create: yes
+
+- name: Enable NTP
+  command: timedatectl set-ntp yes

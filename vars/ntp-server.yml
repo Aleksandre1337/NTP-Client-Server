@@ -1,0 +1,7 @@
+ntp_packages:
+  - build-essential
+  - net-tools
+  - curl
+  - git
+  - software-properties-common
+  - chrony

@@ -1,0 +1,10 @@
+---
+- hosts: ntp-server
+  become: yes
+  roles:
+    - ntp-server
+
+- hosts: ntp-client
+  become: yes
+  roles:
+    - ntp-client

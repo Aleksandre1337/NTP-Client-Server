@@ -1,0 +1,1 @@
+# Remove ntp_server_ip, use inventory_hostname or hostvars in playbooks/roles instead.

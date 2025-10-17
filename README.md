@@ -14,27 +14,37 @@ The client node will only be equipped with base ubuntu utilities, therefore, onl
 4. `Windows Subsystem for Linux (WSL) (latest)`
 5. `VMware Fusion (optional)`
 
-## Configuration variables explained
+## Folder Structure
 
 ```
-memory: 2048                  # ram for each vm
-cpus: 2                       # cpus for each vm
+.
+├── Vagrantfile
+├── config.yml
+├── ansible.cfg
+├── inventory/
+│   └── vagrant.ini
+├── playbooks/
+│   └── site.yml
+├── roles/
+│   ├── common/
+│   │   └── tasks/
+│   │       └── main.yml
+│   ├── ntp-server/
+│   │   └── tasks/
+│   │       └── main.yml
+│   └── ntp-client/
+│       └── tasks/
+│           └── main.yml
+```
 
-nodes: 2                      # number of vms
-box: generic/ubuntu2204       # vagrant box for each vm
-playbook: config.yml         # playbook used to run role(s)
-```
-**Note:** vagrant automatically assigns VM hostnames and private IPs in the following manner:
-```
-ntp-server - 192.168.56.20
-ntp-client - 192.168.56.21
-```
+## Structure
+
+- Modular Ansible roles for NTP server/client
+- Centralized variables in `group_vars`
+- Unified `site.yml` playbook
+- Vagrantfile provisions VMs and delegates config to Ansible
 
 ## Usage
 
-1. Create role and put it in `roles/` or the main directory.
-2. Create custom playbook (e.g. `example.yml`) to test your role.
-3. Change `config.yml` variables for your needs.
-4. Run command `vagrant up` and wait for provisioning.
-
-**Note:** Feel free to modify the `Vagrantfile` as per your host machine and other requirements.
+1. `vagrant up` to provision and configure.
+2. Edit `config.yml` or inventory as needed for scaling or new environments.
